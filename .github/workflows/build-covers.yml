@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths: ["covers/**", "scripts/**", "assets/**", ".github/workflows/build-covers.yml"]
   workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
 
 permissions:
   contents: write
@@ -19,11 +21,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+      - name: Find new blog posts waiting for a cover
+        run: python3 scripts/scan_blog.py
+
+      - name: Check for covers to render
+        id: todo
+        run: |
+          n=0
+          for f in covers/*.json; do
+            [ -e "$f" ] || continue
+            s=$(basename "$f" .json)
+            [ -e "images/$s.jpg" ] || n=$((n+1))
+          done
+          echo "Covers to render: $n"
+          echo "count=$n" >> "$GITHUB_OUTPUT"
 
       - name: Get template, font and Pillow
+        if: steps.todo.outputs.count != '0'
         run: |
           pip install pillow
           cp assets/template.png /tmp/template.png
@@ -32,13 +46,15 @@ jobs:
           cp /tmp/package/files/barlow-condensed-latin-800-normal.woff /tmp/headline.woff
 
       - name: Render new covers
+        if: steps.todo.outputs.count != '0'
         run: python3 scripts/make_cover.py /tmp/template.png /tmp/headline.woff
 
       - name: Commit images
+        if: steps.todo.outputs.count != '0'
         run: |
           git config user.name "gims-cover-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add images
+          git add covers images
           git diff --cached --quiet && echo "No new covers" && exit 0
           git commit -m "Add blog cover images"
           git pull --rebase

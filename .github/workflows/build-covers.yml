@@ -3,7 +3,7 @@ name: Build blog covers
 on:
   push:
     branches: [main]
-    paths: ["covers/**", "scripts/**", ".github/workflows/build-covers.yml"]
+    paths: ["covers/**", "scripts/**", "assets/**", ".github/workflows/build-covers.yml"]
   workflow_dispatch:
 
 permissions:
@@ -26,7 +26,7 @@ jobs:
       - name: Get template, font and Pillow
         run: |
           pip install pillow
-          curl -fsSL -o /tmp/template.png "https://assets.cdn.filesafe.space/xAQ56Sa4ugduqz5GZJRY/media/6a1e15dcd53fc25488f703e4.png"
+          cp assets/template.png /tmp/template.png
           cd /tmp && npm pack @fontsource/barlow-condensed@5 --silent
           tar xzf /tmp/fontsource-barlow-condensed-*.tgz -C /tmp
           cp /tmp/package/files/barlow-condensed-latin-800-normal.woff /tmp/headline.woff

@@ -1,0 +1,45 @@
+name: Build blog covers
+
+on:
+  push:
+    branches: [main]
+    paths: ["covers/**", "scripts/**", ".github/workflows/build-covers.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-covers
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Get template, font and Pillow
+        run: |
+          pip install pillow
+          curl -fsSL -o /tmp/template.png "https://assets.cdn.filesafe.space/xAQ56Sa4ugduqz5GZJRY/media/6a1e15dcd53fc25488f703e4.png"
+          cd /tmp && npm pack @fontsource/barlow-condensed@5 --silent
+          tar xzf /tmp/fontsource-barlow-condensed-*.tgz -C /tmp
+          cp /tmp/package/files/barlow-condensed-latin-800-normal.woff /tmp/headline.woff
+
+      - name: Render new covers
+        run: python3 scripts/make_cover.py /tmp/template.png /tmp/headline.woff
+
+      - name: Commit images
+        run: |
+          git config user.name "gims-cover-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add images
+          git diff --cached --quiet && echo "No new covers" && exit 0
+          git commit -m "Add blog cover images"
+          git pull --rebase
+          git push

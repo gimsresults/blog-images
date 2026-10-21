@@ -78,6 +78,16 @@ def main():
                 continue
             if sender.get("is_bot"):
                 continue
+            # Forum group (topics): only take messages from the ideas topic
+            # (e.g. "Blog_ideas"); General, New Leads etc. are ignored so lead
+            # details never end up in this public repo.
+            if chat.get("is_forum"):
+                thread = msg.get("message_thread_id") if msg.get("is_topic_message") else None
+                topic = ((msg.get("reply_to_message") or {}).get("forum_topic_created") or {}).get("name", "")
+                if thread and "idea" in topic.lower():
+                    state["topic"] = thread
+                if not thread or thread != state.get("topic"):
+                    continue
             text = (msg.get("text") or msg.get("caption") or "").strip()
             if not text or text.startswith("/"):
                 continue

@@ -1,14 +1,16 @@
-"""Collect blog topic ideas sent to George's private Telegram bot.
+"""Collect blog topic ideas from George's Telegram topics group.
 
 Runs in a GitHub Action every ~15 minutes. Reads new messages with the Bot API
-(getUpdates), saves each text message from the owner as an idea in
-ideas/ideas.json, and replies in Telegram to confirm.
+(getUpdates) and saves every text message posted in the linked group as an
+idea in ideas/ideas.json. The bot stays silent in the group.
 
-The first person to message the bot becomes the owner (saved in
-ideas/state.json); messages from anyone else are ignored.
+The first group the bot sees a message from becomes the linked group (saved in
+ideas/state.json); messages from any other chat are ignored. Private messages
+to the bot from the person who added it are also accepted as ideas, and
+/ideas in a private chat lists what's waiting.
 
-Commands: /ideas lists waiting ideas. /start shows help.
-Needs env var TELEGRAM_BOT_TOKEN.
+Needs env var TELEGRAM_BOT_TOKEN. In BotFather, privacy mode must be disabled
+(/setprivacy -> Disable) or the bot made a group admin, so it sees all messages.
 """
 import datetime as dt
 import json
@@ -40,46 +42,66 @@ def load(path, default):
     return json.loads(path.read_text()) if path.exists() else default
 
 
+def add_idea(ideas, text, ts, source):
+    if any(i["text"].strip().lower() == text.strip().lower() for i in ideas):
+        return None
+    new_id = (max(i["id"] for i in ideas) + 1) if ideas else 1
+    ideas.append({"id": new_id, "text": text, "source": source,
+                  "date": dt.datetime.fromtimestamp(ts, dt.timezone.utc).isoformat()})
+    return new_id
+
+
 def main():
     IDEAS.parent.mkdir(exist_ok=True)
     ideas = load(IDEAS, [])
-    state = load(STATE, {"offset": 0, "owner": None})
+    state = load(STATE, {"offset": 0, "group": None, "owner": None})
     res = call("getUpdates", offset=state["offset"], timeout=0, allowed_updates='["message"]')
     changed = False
     for upd in res.get("result", []):
         state["offset"] = upd["update_id"] + 1
         changed = True
         msg = upd.get("message") or {}
-        text = (msg.get("text") or "").strip()
-        chat = (msg.get("chat") or {}).get("id")
-        if not text or chat is None:
+        chat = msg.get("chat") or {}
+        ctype, cid = chat.get("type"), chat.get("id")
+        sender = (msg.get("from") or {})
+        # group upgraded to supergroup: follow the new id
+        if msg.get("migrate_to_chat_id") and cid == state.get("group"):
+            state["group"] = msg["migrate_to_chat_id"]
             continue
-        if state["owner"] is None:
-            state["owner"] = chat
-            say(chat, "Hi George. This bot is now linked to you only.\n\n"
-                      "Send me any blog topic idea as a message and the next scheduled blog post will use it "
-                      "before searching for a trending topic.\n\nSend /ideas to see what's waiting.")
-            if text.startswith("/"):
+        if ctype in ("group", "supergroup"):
+            if state.get("group") is None:
+                state["group"] = cid
+                if msg.get("new_chat_members") or msg.get("group_chat_created"):
+                    state["owner"] = state.get("owner") or sender.get("id")
+                print("linked group", cid, chat.get("title"))
+            if cid != state["group"]:
                 continue
-        if chat != state["owner"]:
-            continue
-        if text.startswith("/start") or text.startswith("/help"):
-            say(chat, "Send any topic idea as a message. Send /ideas to list ideas saved so far.")
-            continue
-        if text.startswith("/ideas"):
-            recent = ideas[-10:]
-            lines = [f"#{i['id']}: {i['text'][:80]}" for i in recent] or ["No ideas saved yet."]
-            say(chat, "Latest ideas (used ones are skipped by the blog writer automatically):\n" + "\n".join(lines))
-            continue
-        new_id = (max([i["id"] for i in ideas]) + 1) if ideas else 1
-        ideas.append({"id": new_id, "text": text,
-                      "date": dt.datetime.fromtimestamp(msg.get("date", 0), dt.timezone.utc).isoformat()})
-        say(chat, f"Saved idea #{new_id}. It will be used for one of the next blog posts.")
-        print("saved idea", new_id)
+            if sender.get("is_bot"):
+                continue
+            text = (msg.get("text") or msg.get("caption") or "").strip()
+            if not text or text.startswith("/"):
+                continue
+            new_id = add_idea(ideas, text, msg.get("date", 0), "group")
+            print("saved idea", new_id)
+        elif ctype == "private":
+            text = (msg.get("text") or "").strip()
+            if state.get("owner") is None:
+                state["owner"] = sender.get("id")
+            if sender.get("id") != state.get("owner") or not text:
+                continue
+            if text.startswith("/ideas"):
+                recent = ideas[-10:]
+                lines = [f"#{i['id']}: {i['text'][:80]}" for i in recent] or ["No ideas saved yet."]
+                say(cid, "Latest ideas (the blog writer skips ones already used):\n" + "\n".join(lines))
+            elif text.startswith("/"):
+                say(cid, "Post topic ideas in your group (or send them here). Send /ideas to see the latest.")
+            else:
+                new_id = add_idea(ideas, text, msg.get("date", 0), "dm")
+                say(cid, f"Saved idea #{new_id}." if new_id else "Already saved.")
     if changed:
         IDEAS.write_text(json.dumps(ideas, indent=1, ensure_ascii=False) + "\n")
         STATE.write_text(json.dumps(state, indent=1) + "\n")
-    print("ideas total:", len(ideas))
+    print("ideas total:", len(ideas), "group:", state.get("group"))
 
 
 if __name__ == "__main__":

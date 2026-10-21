@@ -16,6 +16,7 @@ import datetime as dt
 import json
 import os
 import pathlib
+import re
 import urllib.parse
 import urllib.request
 
@@ -40,6 +41,16 @@ def say(chat_id, text):
 
 def load(path, default):
     return json.loads(path.read_text()) if path.exists() else default
+
+
+def split_ideas(text):
+    """One idea per line; strips list markers like '1.', '2)', '-', '*', '•'."""
+    out = []
+    for line in text.splitlines():
+        line = re.sub(r"^\s*(\d+[.)]|[-*•–])\s*", "", line).strip()
+        if len(line) >= 4:
+            out.append(line)
+    return out
 
 
 def add_idea(ideas, text, ts, source):
@@ -91,8 +102,8 @@ def main():
             text = (msg.get("text") or msg.get("caption") or "").strip()
             if not text or text.startswith("/"):
                 continue
-            new_id = add_idea(ideas, text, msg.get("date", 0), "group")
-            print("saved idea", new_id)
+            for line in split_ideas(text):
+                print("saved idea", add_idea(ideas, line, msg.get("date", 0), "group"))
         elif ctype == "private":
             text = (msg.get("text") or "").strip()
             if state.get("owner") is None:
@@ -106,8 +117,9 @@ def main():
             elif text.startswith("/"):
                 say(cid, "Post topic ideas in your group (or send them here). Send /ideas to see the latest.")
             else:
-                new_id = add_idea(ideas, text, msg.get("date", 0), "dm")
-                say(cid, f"Saved idea #{new_id}." if new_id else "Already saved.")
+                ids = [add_idea(ideas, line, msg.get("date", 0), "dm") for line in split_ideas(text)]
+                ids = [str(i) for i in ids if i]
+                say(cid, f"Saved idea #{', #'.join(ids)}." if ids else "Already saved.")
     if changed:
         IDEAS.write_text(json.dumps(ideas, indent=1, ensure_ascii=False) + "\n")
         STATE.write_text(json.dumps(state, indent=1) + "\n")

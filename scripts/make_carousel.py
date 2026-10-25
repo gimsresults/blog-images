@@ -203,6 +203,8 @@ def render(spec, outdir):
 
 if __name__ == "__main__":
     for spec_path in sorted((ROOT / "carousels").glob("*.json")):
+        if spec_path.name == "log.json":
+            continue
         outdir = ROOT / "carousels" / spec_path.stem
         if (outdir / "01.jpg").exists():
             continue

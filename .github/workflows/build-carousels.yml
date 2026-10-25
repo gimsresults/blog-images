@@ -26,6 +26,7 @@ jobs:
           for f in carousels/*.json; do
             [ -e "$f" ] || continue
             s=$(basename "$f" .json)
+            [ "$s" = "log" ] && continue
             [ -e "carousels/$s/01.jpg" ] || n=$((n+1))
           done
           echo "Carousels to render: $n"

@@ -1,0 +1,89 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "title": [
+    "BEFORE YOU",
+    "*HIRE AN SEO*",
+    "COMPANY"
+   ],
+   "sub": "Five red flags I'd walk away from."
+  },
+  {
+   "type": "text",
+   "title": [
+    "THE WRONG ONE",
+    "*COSTS A YEAR*"
+   ],
+   "body": "Then it leaves you a mess to clean up."
+  },
+  {
+   "type": "text",
+   "kicker": "Red flag 1",
+   "title": [
+    "A RANKING",
+    "*GUARANTEE*"
+   ],
+   "body": "Google's own guide says no one can guarantee a #1 ranking. If they promise it, find someone else."
+  },
+  {
+   "type": "text",
+   "kicker": "Red flag 2",
+   "title": [
+    "A \"SPECIAL",
+    "*RELATIONSHIP\"*",
+    "WITH GOOGLE"
+   ],
+   "body": "Google warns about this pitch too. Nobody gets a back door."
+  },
+  {
+   "type": "text",
+   "kicker": "Red flag 3",
+   "title": [
+    "QUICK-WIN",
+    "*SHORTCUTS*"
+   ],
+   "body": "Fake reviews. Junk links. Copy-paste suburb pages. Works for a month, then Google catches up."
+  },
+  {
+   "type": "text",
+   "kicker": "Red flag 4",
+   "title": [
+    "LOCKED IN FOR",
+    "*12 MONTHS*"
+   ],
+   "body": "If the work is good, you'll stay anyway. If it's not working, you should be free to stop."
+  },
+  {
+   "type": "text",
+   "kicker": "Red flag 5",
+   "title": [
+    "THEY CAN'T RANK",
+    "*THEMSELVES*"
+   ],
+   "body": "Search \"SEO\" plus their suburb. If they don't show up in their own backyard, ask why."
+  },
+  {
+   "type": "list",
+   "title": [
+    "*RECAP*"
+   ],
+   "items": [
+    "No guarantees",
+    "No back doors",
+    "No shortcuts",
+    "No lock-ins",
+    "Check their own ranking"
+   ]
+  },
+  {
+   "type": "cta",
+   "title": [
+    "WANT A",
+    "*FREE AUDIT?*"
+   ],
+   "body": "Comment GOOGLE below or send us a message, and I'll check your Google profile for free.",
+   "keyword": "GOOGLE"
+  }
+ ]
+}

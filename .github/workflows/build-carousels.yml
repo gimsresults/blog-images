@@ -1,0 +1,59 @@
+name: Build carousels
+
+on:
+  push:
+    branches: [main]
+    paths: ["carousels/*.json", "scripts/make_carousel.py", ".github/workflows/build-carousels.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-carousels
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for carousels to render
+        id: todo
+        run: |
+          n=0
+          for f in carousels/*.json; do
+            [ -e "$f" ] || continue
+            s=$(basename "$f" .json)
+            [ -e "carousels/$s/01.jpg" ] || n=$((n+1))
+          done
+          echo "Carousels to render: $n"
+          echo "count=$n" >> "$GITHUB_OUTPUT"
+
+      - name: Get fonts and Pillow
+        if: steps.todo.outputs.count != '0'
+        run: |
+          pip install pillow
+          cd /tmp
+          npm pack @fontsource/barlow-condensed@5 --silent && mkdir bc && tar xzf fontsource-barlow-condensed-*.tgz -C bc
+          npm pack @fontsource/barlow@5 --silent && mkdir b && tar xzf fontsource-barlow-5*.tgz -C b
+
+      - name: Render
+        if: steps.todo.outputs.count != '0'
+        run: |
+          python3 scripts/make_carousel.py assets/template.png \
+            /tmp/bc/package/files/barlow-condensed-latin-800-normal.woff \
+            /tmp/b/package/files/barlow-latin-500-normal.woff \
+            /tmp/b/package/files/barlow-latin-600-normal.woff
+
+      - name: Commit slides
+        if: steps.todo.outputs.count != '0'
+        run: |
+          git config user.name "gims-carousel-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add carousels
+          git diff --cached --quiet && exit 0
+          git commit -m "Render carousel slides"
+          git pull --rebase
+          git push

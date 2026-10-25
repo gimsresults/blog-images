@@ -1,0 +1,86 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "title": [
+    "WHO GOOGLE",
+    "*PUTS ON*",
+    "THE MAP"
+   ],
+   "sub": "Google's own three reasons, in plain English."
+  },
+  {
+   "type": "text",
+   "title": [
+    "THREE GET",
+    "*THE MAP*"
+   ],
+   "body": "Search \"plumber near me\". Three businesses get the map. Everyone else gets scrolled past."
+  },
+  {
+   "type": "text",
+   "kicker": "1. Relevance",
+   "title": [
+    "DO YOU MATCH",
+    "*THE SEARCH?*"
+   ],
+   "body": "Google checks your category, services and description against what people typed. Wrong boxes, wrong searches."
+  },
+  {
+   "type": "text",
+   "kicker": "2. Distance",
+   "title": [
+    "HOW CLOSE",
+    "*ARE YOU?*"
+   ],
+   "body": "You can't move your shop. You can set your service areas properly, so Google knows where you work."
+  },
+  {
+   "type": "text",
+   "kicker": "3. Prominence",
+   "title": [
+    "HOW WELL",
+    "*KNOWN ARE YOU?*"
+   ],
+   "body": "Your reviews, your website, other sites mentioning you. Google weighs all of it."
+  },
+  {
+   "type": "text",
+   "title": [
+    "YOU CAN'T BUY",
+    "*A BETTER SPOT*"
+   ],
+   "body": "Google says there's no way to pay for a better local ranking. You earn it, steadily."
+  },
+  {
+   "type": "text",
+   "title": [
+    "FIX THIS",
+    "*FIRST*"
+   ],
+   "body": "Fill in every part of your Google Business Profile: category, services, areas, hours, photos of real jobs."
+  },
+  {
+   "type": "list",
+   "title": [
+    "*RECAP*"
+   ],
+   "items": [
+    "Relevance: match the search",
+    "Distance: set your areas",
+    "Prominence: build your name",
+    "Complete profile first",
+    "No paying for spots"
+   ]
+  },
+  {
+   "type": "cta",
+   "title": [
+    "WANT A",
+    "*FREE AUDIT?*"
+   ],
+   "body": "Comment GOOGLE below or send us a message, and I'll check your Google profile for free.",
+   "keyword": "GOOGLE"
+  }
+ ]
+}

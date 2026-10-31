@@ -1,0 +1,91 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "title": [
+    "SHOULD YOU",
+    "EVEN RUN",
+    "*GOOGLE ADS?*"
+   ],
+   "sub": "Five checks before you spend a dollar."
+  },
+  {
+   "type": "text",
+   "title": [
+    "AUD$1,500",
+    "*TWO CALLS*"
+   ],
+   "body": "\"I tried Google Ads once. AUD$1,500 gone, two calls.\" I hear some version of this every month."
+  },
+  {
+   "type": "text",
+   "kicker": "Check 1",
+   "title": [
+    "PEOPLE SEARCH",
+    "*FOR IT*"
+   ],
+   "body": "Someone in Carindale types \"emergency electrician near me\" at 9pm. That's an ad market. Google Ads won't create demand nobody has."
+  },
+  {
+   "type": "text",
+   "kicker": "Check 2",
+   "title": [
+    "ONE JOB",
+    "*PAYS FOR*",
+    "THE CLICKS"
+   ],
+   "body": "Do the maths first. One AUD$400 switchboard job covers a lot of clicks. A AUD$25 haircut has to work much harder."
+  },
+  {
+   "type": "text",
+   "kicker": "Check 3",
+   "title": [
+    "SOMEONE",
+    "*ANSWERS*",
+    "THE PHONE"
+   ],
+   "body": "Ads ring at 9pm on a Tuesday. Voicemail means you paid for a lead your competitor in Aspley just booked."
+  },
+  {
+   "type": "text",
+   "kicker": "Check 4",
+   "title": [
+    "THE PAGE",
+    "*GETS THE CALL*"
+   ],
+   "body": "One service. One area. One big call button. Sending clicks to your homepage? (Good luck finding the phone number.)"
+  },
+  {
+   "type": "text",
+   "kicker": "Check 5",
+   "title": [
+    "CHECK YOUR",
+    "*LOCATION*",
+    "SETTING"
+   ],
+   "body": "Set it to \"Presence\" so you only pay for people actually in your area. Your Wynnum ad has no business showing in Cairns."
+  },
+  {
+   "type": "list",
+   "title": [
+    "*RECAP*"
+   ],
+   "items": [
+    "People search for what you do",
+    "One job covers the clicks",
+    "Someone answers the phone",
+    "The page has a call button",
+    "Location set to Presence"
+   ]
+  },
+  {
+   "type": "cta",
+   "title": [
+    "WANT A",
+    "*FREE AUDIT?*"
+   ],
+   "body": "Send us a DM and I'll check your Google Ads account for free.",
+   "keyword": "DM US"
+  }
+ ]
+}

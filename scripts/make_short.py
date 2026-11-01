@@ -184,11 +184,24 @@ def main():
         clip = fetch(sc["clip"], str(tmp / f"clip{i}.mp4"))
         vo = fetch(sc["vo"], str(tmp / f"vo{i}.mp3"))
         vd, cd = dur(vo), dur(clip)
-        D = round(LEAD + vd + TAIL, 3)
-        slow = max(1.0, D / cd)
+        # talking-head clips are lip-synced to the voiceover from frame 0: no lead-in, no slow-down
+        lead = 0.0 if sc.get("talking") else LEAD
+        D = round(lead + vd + (0.0 if sc.get("talking") else TAIL), 3)
+        slow = 1.0 if sc.get("talking") else max(1.0, D / cd)
         caps = chunks(sc["caption"])
         total = sum(len(c) for c in caps)
-        t = LEAD
+        t = lead
+        timed = None
+        if sc.get("words"):  # [[start, end, word], ...] relative to the scene's voiceover
+            timed, cur = [], []
+            for k, (ws, we, w) in enumerate(sc["words"]):
+                cur.append((ws, w))
+                if len(cur) >= 4 or re.search(r"[.?!,]$", w):
+                    timed.append((cur[0][0], " ".join(x[1] for x in cur)))
+                    cur = []
+            if cur:
+                timed.append((cur[0][0], " ".join(x[1] for x in cur)))
+            caps = [c for _, c in timed]
         inputs = ["-i", clip, "-i", vo, "-i", str(badge)]
         filt = [f"[0:v]setpts={slow:.4f}*PTS,scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS},trim=0:{D},setpts=PTS-STARTPTS[v0]",
                 "[v0][2:v]overlay=0:0[v1]"]
@@ -196,21 +209,32 @@ def main():
         for j, c in enumerate(caps):
             png = tmp / f"cap{i}_{j}.png"
             caption_png(c, png)
-            seg = vd * len(c) / total
-            start, end = t, (t + seg if j < len(caps) - 1 else D)
+            if timed:
+                start = lead + timed[j][0]
+                end = lead + timed[j + 1][0] if j < len(timed) - 1 else D
+            else:
+                seg = vd * len(c) / total
+                start, end = t, (t + seg if j < len(caps) - 1 else D)
             inputs += ["-i", str(png)]
             filt.append(f"[{last}][{3 + j}:v]overlay=0:1180:enable='between(t,{start:.3f},{end:.3f})'[c{j}]")
             last = f"c{j}"
-            t += seg
-        filt.append(f"[1:a]adelay={int(LEAD * 1000)}|{int(LEAD * 1000)},apad,atrim=0:{D},aresample=44100,aformat=channel_layouts=stereo[a]")
+            if not timed:
+                t += seg
+        ms = int(lead * 1000)
+        filt.append(f"[1:a]adelay={ms}|{ms},apad,atrim=0:{D},aresample=44100,aformat=channel_layouts=stereo[a]")
         out = tmp / f"part{i}.mp4"
         run(["ffmpeg", "-y", *inputs, "-filter_complex", ";".join(filt), "-map", f"[{last}]", "-map", "[a]",
              "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-r", str(FPS),
              "-c:a", "aac", "-b:a", "160k", "-t", str(D), str(out)])
         parts.append(out)
     cta = spec["cta"]
-    vo = fetch(cta["vo"], str(tmp / "vo_cta.mp3"))
-    D = round(LEAD + dur(vo) + 1.2, 3)
+    if cta.get("vo"):
+        vo = fetch(cta["vo"], str(tmp / "vo_cta.mp3"))
+        D = round(LEAD + dur(vo) + 1.2, 3)
+    else:  # CTA already spoken in the last scene: silent 2.5s end card
+        vo = str(tmp / "silence.wav")
+        run(["ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-t", "0.5", vo])
+        D = 2.5
     card = tmp / "cta.png"
     cta_png(cta, card)
     out = tmp / "part_cta.mp4"

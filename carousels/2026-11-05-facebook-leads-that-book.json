@@ -1,0 +1,13 @@
+{
+ "slides": [
+  {"type": "cover", "title": ["FACEBOOK LEADS", "*THAT BOOK*"], "sub": "Five fixes for what happens after the form."},
+  {"type": "text", "title": ["9PM IN", "*BRUNSWICK*"], "body": "Someone taps your ad on the couch, submits in ten seconds, then lets your 9am call go to voicemail."},
+  {"type": "text", "kicker": "Fix 1", "title": ["PUT THE DIARY", "*IN THE FORM*"], "body": "Meta now shows your calendar after the Instant Form. They pick a time without leaving Facebook. Switch it on and walk away? (famous last words)"},
+  {"type": "text", "kicker": "Fix 2", "title": ["SHOW TIMES", "*THIS WEEK*"], "body": "A plumber in Frankston with slots three weeks out gets no bookings. People book what's easy."},
+  {"type": "text", "kicker": "Fix 3", "title": ["NAME IT LIKE", "*A HUMAN*"], "body": "\"Free 15 minute phone quote\" gets booked. \"Consultation Type B\" gets scrolled past."},
+  {"type": "text", "kicker": "Fix 4", "title": ["ASK WHICH", "*SUBURB*"], "body": "One question before the calendar. Your Fitzroy business has no reason to book a job in Werribee (two hours of traffic, zero profit)."},
+  {"type": "text", "kicker": "Fix 5", "title": ["KEEP", "*CALLING*"], "body": "The calendar catches the ready ones. Everyone else still gets a call within the hour. Booking tools don't pick up phones."},
+  {"type": "list", "title": ["*RECAP*"], "items": ["Calendar inside the Instant Form", "Slots in the next few days", "Plain appointment names", "Ask the suburb first", "Call the rest within the hour"]},
+  {"type": "cta", "title": ["WANT A", "*FREE AUDIT?*"], "body": "Send us a DM and I'll check your Facebook and Instagram ads for free.", "keyword": "DM US"}
+ ]
+}

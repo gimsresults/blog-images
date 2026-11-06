@@ -1,0 +1,13 @@
+{
+ "slides": [
+  {"type": "cover", "title": ["NO GOOGLE PROFILE?", "*NO MAP SPOT*"], "sub": "Five jobs your Google profile does that your website can't."},
+  {"type": "text", "title": ["PLUMBER", "*JOONDALUP*"], "body": "Search it and the map shows three plumbers before a single website, and every one of them has a Google profile."},
+  {"type": "text", "kicker": "Job 1", "title": ["IT PUTS YOU", "*ON THE MAP*"], "body": "The map pulls from Google profiles. Your website shows up underneath, if it shows up at all."},
+  {"type": "text", "kicker": "Job 2", "title": ["THEY CALL", "*FROM THE SEARCH*"], "body": "Call button, directions, hours, right in the results. Dave in Midland needed a sparky at 7am and rang the first number he saw."},
+  {"type": "text", "kicker": "Job 3", "title": ["THE STARS", "*LIVE HERE*"], "body": "The stars next to your name come from your Google profile. The testimonials page on your website gets read by your mum (hi Mum)."},
+  {"type": "text", "kicker": "Job 4", "title": ["IT SAYS", "*YOU'RE OPEN*"], "body": "Wrong Saturday hours on Google cost you the customer who drove to Fremantle and found the door locked."},
+  {"type": "text", "kicker": "Job 5", "title": ["IT TELLS GOOGLE", "*WHERE YOU WORK*"], "body": "Categories and service areas tell Google you fix roofs in Rockingham. Your website still matters. It backs the profile up."},
+  {"type": "list", "title": ["*RECAP*"], "items": ["Profiles fill the map", "Customers call straight from search", "Your stars come from Google", "Correct hours win the walk-in", "Categories tell Google what you do", "Your website backs it all up"]},
+  {"type": "cta", "title": ["WANT A", "*FREE AUDIT?*"], "body": "Send us a DM and I'll check your Google profile for free.", "keyword": "DM US"}
+ ]
+}

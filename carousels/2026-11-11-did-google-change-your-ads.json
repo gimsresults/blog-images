@@ -1,0 +1,13 @@
+{
+ "slides": [
+  {"type": "cover", "title": ["DID GOOGLE", "*CHANGE YOUR*", "ADS?"], "sub": "Five settings to check since Google's AI Max switch."},
+  {"type": "text", "title": ["GOOGLE FLIPPED", "*THE SWITCH*", "FOR YOU"], "body": "On 1 September 2026, Google moved Search campaigns using broad match or auto-created assets onto AI Max. You didn't have to click a thing."},
+  {"type": "text", "kicker": "Check 1", "title": ["IS AI MAX", "*SWITCHED ON?*"], "body": "Open each Search campaign's settings. If AI Max is on, Google now picks extra searches for your ad and writes some of your ad text."},
+  {"type": "text", "kicker": "Check 2", "title": ["READ YOUR", "*SEARCH TERMS*"], "body": "AI Max shows your ad for searches you never chose. Check the search terms report every week. (\"Plumbing apprentice jobs Joondalup\" is not a customer.)"},
+  {"type": "text", "kicker": "Check 3", "title": ["ADD", "*NEGATIVE*", "KEYWORDS"], "body": "Negative keywords still block searches under AI Max. Add \"jobs\" and \"DIY\" so you stop paying for people who will never book."},
+  {"type": "text", "kicker": "Check 4", "title": ["READ THE", "*AD TEXT*", "GOOGLE WROTE"], "body": "Google writes headlines from your website. Your site still says \"same day service\" from 2023? Your ad says it now too."},
+  {"type": "text", "kicker": "Check 5", "title": ["CHECK WHERE", "*THE CLICK*", "LANDS"], "body": "Google now picks which page people land on. Exclude your blog and careers pages. Buyers belong on the page with your phone number."},
+  {"type": "list", "title": ["*RECAP*"], "items": ["Check if AI Max is on", "Read your search terms weekly", "Add negative keywords", "Read the ad text Google wrote", "Check which page clicks land on"]},
+  {"type": "cta", "title": ["WANT A", "*FREE AUDIT?*"], "body": "Send us a DM and I'll check your Google Ads account for free.", "keyword": "DM US"}
+ ]
+}

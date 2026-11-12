@@ -1,0 +1,13 @@
+{
+ "slides": [
+  {"type": "cover", "title": ["META'S AI", "*EDITS YOUR ADS*"], "sub": "Five checks so your ads say what you wrote."},
+  {"type": "text", "title": ["SINCE", "*30 OCTOBER*"], "body": "Meta's new ad terms make you responsible for every change its AI makes to your ads, even the features Meta switched on for you."},
+  {"type": "text", "kicker": "Check 1", "title": ["OPEN THE", "*CREATIVE MENU*"], "body": "In Ads Manager, open each ad and find the Advantage+ creative section. Every AI edit has its own switch. Most start switched on."},
+  {"type": "text", "kicker": "Check 2", "title": ["READ WHAT", "*META WROTE*"], "body": "Meta rewrites your ad text. Dave's Osborne Park electrical ad says \"licensed\". Make sure the rewrite never promises \"same day\". (Dave's booked till Friday.)"},
+  {"type": "text", "kicker": "Check 3", "title": ["LOOK AT", "*EVERY PHOTO*"], "body": "Meta crops and stretches your images to fit each spot. A chopped logo looks cheap. Open every preview."},
+  {"type": "text", "kicker": "Check 4", "title": ["SWITCH OFF", "*PRODUCT BROWSING*"], "body": "Since 28 October, Meta can show product suggestions inside Facebook before people reach your website. Want people landing on your booking page? Turn product browsing off."},
+  {"type": "text", "kicker": "Check 5", "title": ["RECHECK EVERY", "*DUPLICATE*"], "body": "Duplicate an ad or swap the photo and Meta's AI edits can switch back on. Turned them off once, sorted forever? (famous last words)"},
+  {"type": "list", "title": ["*RECAP*"], "items": ["Open each ad's Advantage+ creative menu", "Read the text Meta rewrote", "Check every image preview", "Switch off product browsing", "Recheck after you duplicate an ad"]},
+  {"type": "cta", "title": ["WANT A", "*FREE AUDIT?*"], "body": "Send us a DM and I'll check your Facebook and Instagram ads for free.", "keyword": "DM US"}
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "slides": [
+  {"type": "cover", "title": ["IS LOCAL SEO", "*WORTH IT*", "FOR YOU?"], "sub": "Five checks to run before you spend a cent on it."},
+  {"type": "text", "title": ["“WILL SEO WORK", "*FOR MY BUSINESS?*”"], "body": "Almost every Perth owner asks me this first. Five quick checks give you the answer."},
+  {"type": "text", "kicker": "Check 1", "title": ["PEOPLE SEARCH", "*FOR WHAT YOU DO*"], "body": "Type your trade and suburb into Google, like “electrician Midland”. If Google finishes the phrase for you, people are searching for it."},
+  {"type": "text", "kicker": "Check 2", "title": ["YOUR CUSTOMERS", "*LIVE NEARBY*"], "body": "You work a set of suburbs, from a shopfront or from the ute. Local SEO puts you in front of people in those suburbs."},
+  {"type": "text", "kicker": "Check 3", "title": ["COMPETITORS", "*ARE ON THE MAP*"], "body": "Search “dentist Subiaco” and three dentists show on the map. Good news: customers are searching (and right now they're calling someone else)."},
+  {"type": "text", "kicker": "Check 4", "title": ["YOU HAVE ROOM", "*FOR MORE JOBS*"], "body": "Booked out until March? Then more calls only make people wait."},
+  {"type": "text", "kicker": "Check 5", "title": ["YOU'LL STICK", "*WITH IT FOR MONTHS*"], "body": "Local SEO is slow. Your profile, reviews and website get stronger every month. Quit after six weeks and you paid for the slow part only."},
+  {"type": "list", "title": ["*RECAP*"], "items": ["People Google your trade and suburb", "Your customers live nearby", "Competitors already show on the map", "You have room for more jobs", "You'll stick with it for months"]},
+  {"type": "cta", "title": ["WANT A", "*FREE AUDIT?*"], "body": "Send us a DM and I'll check your Google profile for free.", "keyword": "DM US"}
+ ]
+}

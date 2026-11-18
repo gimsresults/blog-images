@@ -1,13 +1,92 @@
 {
  "slides": [
-  {"type": "cover", "title": ["HOW GOOGLE ADS", "*GETS YOU*", "CALLS"], "sub": "Five steps from a Sydney search to your phone ringing."},
-  {"type": "text", "title": ["7AM.", "*BURST PIPE.*", "PARRAMATTA."], "body": "Someone types \"emergency plumber Parramatta\" into Google, and five settings in your Google Ads decide whose phone rings."},
-  {"type": "text", "kicker": "Step 1", "title": ["PAY FOR", "*READY-TO-BOOK*", "SEARCHES"], "body": "Pay for searches like \"blocked drain Chatswood\". Skip \"how to unblock a drain\". That person is already holding a plunger."},
-  {"type": "text", "kicker": "Step 2", "title": ["SHOW YOUR AD", "*WHERE YOU WORK*"], "body": "By default, Google also shows your ad to people who live elsewhere but searched about your area. Switch the location setting to \"Presence\"."},
-  {"type": "text", "kicker": "Step 3", "title": ["PUT THE SEARCH", "*IN YOUR*", "HEADLINE"], "body": "Someone searched \"blocked drain Chatswood\". Your headline says \"Blocked Drains Fixed in Chatswood\". Plain words win the click."},
-  {"type": "text", "kicker": "Step 4", "title": ["SEND CLICKS", "*TO A PAGE*", "THAT SELLS"], "body": "One service, one suburb, phone number at the top. A homepage still showing 2019 Christmas hours loses the job. (We've all seen one.)"},
-  {"type": "text", "kicker": "Step 5", "title": ["COUNT", "*EVERY CALL*"], "body": "Add a call button and count every call as a conversion. Without call tracking, Google chases clicks. Clicks don't pay your rent."},
-  {"type": "list", "title": ["*RECAP*"], "items": ["Pay for ready-to-book searches", "Set your location to Presence", "Match the headline to the search", "Send clicks to a page with your number", "Count every call as a conversion"]},
-  {"type": "cta", "title": ["WANT A", "*FREE AUDIT?*"], "body": "Send us a DM and I'll check your Google Ads account for free.", "keyword": "DM US"}
+  {
+   "type": "cover",
+   "title": [
+    "HOW GOOGLE ADS",
+    "*GETS YOU*",
+    "CALLS"
+   ],
+   "sub": "Five steps from a Sydney search to your phone ringing."
+  },
+  {
+   "type": "text",
+   "title": [
+    "7AM.",
+    "*BURST PIPE.*",
+    "PARRAMATTA."
+   ],
+   "body": "Someone types \"emergency plumber Parramatta\" into Google, and five settings in your Google Ads decide whose phone rings."
+  },
+  {
+   "type": "text",
+   "kicker": "Step 1",
+   "title": [
+    "PAY FOR",
+    "*READY-TO-BOOK*",
+    "SEARCHES"
+   ],
+   "body": "Pay for searches like \"blocked drain Chatswood\". Skip \"how to unblock a drain\". That person is already holding a plunger."
+  },
+  {
+   "type": "text",
+   "kicker": "Step 2",
+   "title": [
+    "SHOW YOUR AD",
+    "*WHERE YOU WORK*"
+   ],
+   "body": "By default, Google also shows your ad to people who live elsewhere but searched about your area. Switch the location setting to \"Presence\"."
+  },
+  {
+   "type": "text",
+   "kicker": "Step 3",
+   "title": [
+    "PUT THE SEARCH",
+    "*IN YOUR*",
+    "HEADLINE"
+   ],
+   "body": "Someone searched \"blocked drain Chatswood\". Your headline says \"Blocked Drains Fixed in Chatswood\". Plain words win the click."
+  },
+  {
+   "type": "text",
+   "kicker": "Step 4",
+   "title": [
+    "SEND CLICKS",
+    "*TO A PAGE*",
+    "THAT SELLS"
+   ],
+   "body": "One service, one suburb, phone number at the top. A homepage still showing 2019 Christmas hours loses the job. (We've all seen one.)"
+  },
+  {
+   "type": "text",
+   "kicker": "Step 5",
+   "title": [
+    "COUNT",
+    "*EVERY CALL*"
+   ],
+   "body": "Add a call button and count every call as a conversion. Without call tracking, Google chases clicks. Clicks don't pay your rent."
+  },
+  {
+   "type": "list",
+   "title": [
+    "*RECAP*"
+   ],
+   "items": [
+    "Pay for ready-to-book searches",
+    "Set location to Presence",
+    "Put the search in your headline",
+    "Land clicks on a page with your number",
+    "Count every call"
+   ]
+  },
+  {
+   "type": "cta",
+   "title": [
+    "WANT A",
+    "*FREE AUDIT?*"
+   ],
+   "body": "Send us a DM and I'll check your Google Ads account for free.",
+   "keyword": "DM US"
+  }
  ]
 }

@@ -1,0 +1,13 @@
+{
+ "slides": [
+  {"type": "cover", "title": ["YOUR FACEBOOK ADS", "*ARE WASTING MONEY*"], "sub": "Five signs to check if you run them yourself."},
+  {"type": "text", "title": ["400 LIKES.", "*ZERO CALLS.*"], "body": "A Joondalup plumber boosts a post for AUD$200. The likes roll in. The phone stays quiet."},
+  {"type": "text", "kicker": "Sign 1", "title": ["YOU HIT THE", "*BOOST BUTTON*"], "body": "The Boost button chases likes and views. Likes don't pay the bills. Run your ads in Ads Manager with leads or calls as the goal."},
+  {"type": "text", "kicker": "Sign 2", "title": ["YOU EDIT", "*EVERY MORNING*"], "body": "Meta needs about 50 results in 7 days to learn who buys. Every big edit restarts that learning. Leave the ad alone for a week."},
+  {"type": "text", "kicker": "Sign 3", "title": ["NO PIXEL ON", "*YOUR WEBSITE*"], "body": "Without the Meta pixel, Meta never learns who filled in your form. So Meta keeps finding people who scroll straight past."},
+  {"type": "text", "kicker": "Sign 4", "title": ["CLICKS LAND ON", "*YOUR HOMEPAGE*"], "body": "Sarah in Rockingham taps your ad for a bathroom quote. She lands on your homepage and leaves. Send her to one page with one form."},
+  {"type": "text", "kicker": "Sign 5", "title": ["YOU FIX ADS", "*AT 10PM*"], "body": "A full day of jobs, then an hour in Ads Manager at night. (Romantic.) An hour a night is 7 hours a week you're not billing."},
+  {"type": "list", "title": ["*RECAP*"], "items": ["Skip the Boost button", "Leave each ad alone for 7 days", "Install the Meta pixel", "Send clicks to one page with one form", "Hand your ads off if they eat your evenings"]},
+  {"type": "cta", "title": ["WANT A", "*FREE AUDIT?*"], "body": "Send us a DM and I'll check your Facebook and Instagram ads for free.", "keyword": "DM US"}
+ ]
+}

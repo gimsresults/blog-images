@@ -28,7 +28,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 QUEUE = ROOT / "tweets" / "queue"
 LOG = ROOT / "tweets" / "posted.json"
 URL = "https://api.x.com/2/tweets"
-MAX_LATE_HOURS = 3
+MAX_LATE_HOURS = 10
 
 
 def q(s):
